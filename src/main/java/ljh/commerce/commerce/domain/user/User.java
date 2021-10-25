@@ -2,6 +2,7 @@ package ljh.commerce.commerce.domain.user;
 
 import ljh.commerce.commerce.domain.address.Address;
 import ljh.commerce.commerce.domain.order.Order;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +11,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Builder
 @Getter
+@Entity
 public class User {
 
     @Id
@@ -19,11 +21,13 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(nullable = false, length = 30)
+    //@Column(nullable = false, length = 30)
     private String userName;
 
+    //@Column(nullable = false)
     private String password;
 
+    //@Column(nullable = false)
     private String email;
 
     private LocalDateTime createDate;
