@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>로그인페이지</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<!--로그인 인풋-->
-<form class="login__input" action = "/auth/signin" method="post" >
-    <input type="text" name="username" placeholder="유저네임" required="required" />
-    <input type="password" name="password" placeholder="비밀번호" required="required" />
-    <button>로그인</button>
-</form>
-<!--로그인 인풋end-->
+<div class="container">
+    <!--로그인 인풋-->
+    <form class="login__input" action = "/signin" method="post" >
+        <input type="text" name="userName" placeholder="유저네임" required="required" />
+        <input type="password" name="password" placeholder="비밀번호" required="required" />
+        <button>로그인</button>
+    </form>
+    <!--로그인 인풋end-->
+</div>
 </body>
 </html>

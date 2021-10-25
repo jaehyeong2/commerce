@@ -21,13 +21,13 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    //@Column(nullable = false, length = 30)
+    @Column(unique = true, length = 20)
     private String userName;
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String password;
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String email;
 
     private LocalDateTime createDate;

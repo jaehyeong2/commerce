@@ -1,0 +1,15 @@
+/*기본 마진 패딩, 사이징 초기화*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+}
+
+/*페이지의 중앙을 잡아줄 컨테이너*/
+.container {
+    width: 100%;
+    min-height: 100%;
+}
