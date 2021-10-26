@@ -2,6 +2,7 @@ package ljh.commerce.commerce.controller;
 
 import ljh.commerce.commerce.domain.user.User;
 import ljh.commerce.commerce.dto.SignUpDto;
+import ljh.commerce.commerce.handler.ex.CustomValidationException;
 import ljh.commerce.commerce.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -39,10 +40,11 @@ public class UserController {
             for(FieldError error:bindingResult.getFieldErrors()){
                 errorMap.put(error.getField(),error.getDefaultMessage());
             }
+            throw new CustomValidationException("유효성 검사 실패",errorMap);
+        }else {
+            User user = signUpDto.toEntity();
+            User userEntity = userService.join(user);
+            return "signin";
         }
-
-        User user = signUpDto.toEntity();
-        User userEntity = userService.join(user);
-        return "signin";
     }
 }

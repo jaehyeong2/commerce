@@ -7,10 +7,12 @@ import lombok.Getter;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Data
 public class SignUpDto {
 
+    @Size(min = 2,max = 20)
     @NotBlank
     private String userName;
     @NotBlank

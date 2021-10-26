@@ -2,9 +2,7 @@ package ljh.commerce.commerce.domain.user;
 
 import ljh.commerce.commerce.domain.address.Address;
 import ljh.commerce.commerce.domain.order.Order;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -13,6 +11,8 @@ import java.util.List;
 
 @Builder
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class User {
 
