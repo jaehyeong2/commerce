@@ -14,7 +14,7 @@ public class SignUpDto {
 
     @Size(min = 2,max = 20)
     @NotBlank
-    private String userName;
+    private String username;
     @NotBlank
     private String password;
     @NotBlank
@@ -24,7 +24,7 @@ public class SignUpDto {
 
     public User toEntity() {
         return User.builder()
-                .userName(userName).password(password).email(email).address(address)
+                .username(username).password(password).email(email).address(address)
                 .build();
     }
 

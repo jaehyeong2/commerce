@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Builder
-@Getter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -22,13 +22,15 @@ public class User {
     private Long id;
 
     @Column(unique = true, length = 20)
-    private String userName;
+    private String username;
 
     @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
     private String email;
+
+    private String role;
 
     private LocalDateTime createDate;
 
@@ -37,4 +39,10 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
+
+    @PrePersist
+    public void createDate() {
+        this.createDate = LocalDateTime.now();
+    }
+
 }
