@@ -1,6 +1,6 @@
-package ljh.commerce.commerce.domain.orderitem;
+package ljh.commerce.commerce.domain.orderproduct;
 
-import ljh.commerce.commerce.domain.item.Item;
+import ljh.commerce.commerce.domain.product.Product;
 import ljh.commerce.commerce.domain.order.Order;
 import lombok.Getter;
 
@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-public class OrderItem {
+public class OrderProduct {
     @Id
     @GeneratedValue
     @Column(name = "order_item_id")
@@ -16,7 +16,7 @@ public class OrderItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
-    private Item item;
+    private Product item;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")

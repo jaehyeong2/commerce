@@ -1,7 +1,7 @@
-package ljh.commerce.commerce.domain.item;
+package ljh.commerce.commerce.domain.product;
 
 import ljh.commerce.commerce.domain.categoryitem.CategoryItem;
-import ljh.commerce.commerce.domain.orderitem.OrderItem;
+import ljh.commerce.commerce.domain.orderproduct.OrderProduct;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -12,7 +12,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="dtype")
 @Getter
-public abstract class Item {
+public abstract class Product {
 
     @Id
     @GeneratedValue
@@ -20,7 +20,7 @@ public abstract class Item {
     private Long id;
 
     @OneToMany(mappedBy = "item")
-    private List<OrderItem> orderItemList = new ArrayList<>();
+    private List<OrderProduct> orderItemList = new ArrayList<>();
 
     @OneToMany(mappedBy = "item")
     private List<CategoryItem> categoryItemList = new ArrayList<>();

@@ -1,7 +1,7 @@
 package ljh.commerce.commerce.domain.order;
 
 import ljh.commerce.commerce.domain.delivery.Delivery;
-import ljh.commerce.commerce.domain.orderitem.OrderItem;
+import ljh.commerce.commerce.domain.orderproduct.OrderProduct;
 import ljh.commerce.commerce.domain.user.User;
 import lombok.Getter;
 
@@ -26,7 +26,7 @@ public class Order {
     private User user;
 
     @OneToMany(mappedBy = "order")
-    private List<OrderItem> orderItemList = new ArrayList<>();
+    private List<OrderProduct> orderItemList = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
@@ -43,7 +43,7 @@ public class Order {
         user.getOrders().add(this);
     }
 
-    public void addOrderItem(OrderItem orderItem){
+    public void addOrderItem(OrderProduct orderItem){
         orderItemList.add(orderItem);
         orderItem.setOrder(this);
     }

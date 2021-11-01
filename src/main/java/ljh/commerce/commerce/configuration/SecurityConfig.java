@@ -1,4 +1,4 @@
-package ljh.commerce.commerce.config;
+package ljh.commerce.commerce.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

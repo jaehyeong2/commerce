@@ -2,13 +2,15 @@ package ljh.commerce.commerce.domain.category;
 
 import ljh.commerce.commerce.domain.categoryitem.CategoryItem;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Getter @Setter
 @Entity
-@Getter
 public class Category {
 
     @Id

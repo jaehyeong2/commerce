@@ -1,7 +1,7 @@
 package ljh.commerce.commerce.domain.categoryitem;
 
 import ljh.commerce.commerce.domain.category.Category;
-import ljh.commerce.commerce.domain.item.Item;
+import ljh.commerce.commerce.domain.product.Product;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -20,6 +20,6 @@ public class CategoryItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
-    private Item item;
+    private Product item;
 
 }

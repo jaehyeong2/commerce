@@ -1,4 +1,4 @@
-package ljh.commerce.commerce.config.auth;
+package ljh.commerce.commerce.configuration.auth;
 
 import ljh.commerce.commerce.domain.user.User;
 import lombok.Data;
