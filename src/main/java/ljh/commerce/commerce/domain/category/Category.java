@@ -1,6 +1,6 @@
 package ljh.commerce.commerce.domain.category;
 
-import ljh.commerce.commerce.domain.categoryitem.CategoryItem;
+import ljh.commerce.commerce.domain.categoryproduct.CategoryProduct;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,7 +21,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
-    private List<CategoryItem> categoryItemList = new ArrayList<>();
+    private List<CategoryProduct> categoryProductList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")

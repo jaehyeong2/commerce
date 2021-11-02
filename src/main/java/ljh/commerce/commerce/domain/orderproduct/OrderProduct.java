@@ -11,12 +11,12 @@ import javax.persistence.*;
 public class OrderProduct {
     @Id
     @GeneratedValue
-    @Column(name = "order_item_id")
+    @Column(name = "order_product_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "item_id")
-    private Product item;
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")

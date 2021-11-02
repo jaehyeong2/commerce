@@ -26,7 +26,7 @@ public class Order {
     private User user;
 
     @OneToMany(mappedBy = "order")
-    private List<OrderProduct> orderItemList = new ArrayList<>();
+    private List<OrderProduct> orderProductList = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
@@ -43,9 +43,9 @@ public class Order {
         user.getOrders().add(this);
     }
 
-    public void addOrderItem(OrderProduct orderItem){
-        orderItemList.add(orderItem);
-        orderItem.setOrder(this);
+    public void addOrderProduct(OrderProduct orderProduct){
+        orderProductList.add(orderProduct);
+        orderProduct.setOrder(this);
     }
 
     public void setDelivery(Delivery delivery){

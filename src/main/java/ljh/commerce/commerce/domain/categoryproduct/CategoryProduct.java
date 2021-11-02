@@ -1,4 +1,4 @@
-package ljh.commerce.commerce.domain.categoryitem;
+package ljh.commerce.commerce.domain.categoryproduct;
 
 import ljh.commerce.commerce.domain.category.Category;
 import ljh.commerce.commerce.domain.product.Product;
@@ -8,10 +8,10 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-public class CategoryItem {
+public class CategoryProduct {
     @Id
     @GeneratedValue
-    @Column(name = "category_item_id")
+    @Column(name = "category_product_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -19,7 +19,7 @@ public class CategoryItem {
     private Category category;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "item_id")
-    private Product item;
+    @JoinColumn(name = "product_id")
+    private Product product;
 
 }

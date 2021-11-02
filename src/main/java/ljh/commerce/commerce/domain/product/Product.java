@@ -1,6 +1,6 @@
 package ljh.commerce.commerce.domain.product;
 
-import ljh.commerce.commerce.domain.categoryitem.CategoryItem;
+import ljh.commerce.commerce.domain.categoryproduct.CategoryProduct;
 import ljh.commerce.commerce.domain.orderproduct.OrderProduct;
 import lombok.Getter;
 
@@ -10,25 +10,22 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="dtype")
 @Getter
-public abstract class Product {
+public class Product {
 
     @Id
     @GeneratedValue
-    @Column(name = "item_id")
+    @Column(name = "product_id")
     private Long id;
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "product")
     private List<OrderProduct> orderItemList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "item")
-    private List<CategoryItem> categoryItemList = new ArrayList<>();
+    @OneToMany(mappedBy = "product")
+    private List<CategoryProduct> categoryProductList = new ArrayList<>();
 
     private String name;
     private int price;
     private int stockQuantity;
-
-
 
 }

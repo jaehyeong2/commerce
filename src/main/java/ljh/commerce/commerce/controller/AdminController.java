@@ -2,14 +2,16 @@ package ljh.commerce.commerce.controller;
 
 
 import ljh.commerce.commerce.domain.category.Category;
+import ljh.commerce.commerce.domain.product.Product;
 import ljh.commerce.commerce.service.CategoryService;
+import ljh.commerce.commerce.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class AdminController {
 
     private final CategoryService categoryService;
+    private final ProductService productService;
 
     @GetMapping("/admin")
     public String adminHome(){
@@ -40,4 +43,34 @@ public class AdminController {
         categoryService.addCategory(category);
         return "redirect:/admin/categories";
     }
+
+    @DeleteMapping("/admin/categories/delete/{id}")
+    public String deleteCat(@PathVariable int id){
+        categoryService.deleteCategoryById(id);
+        return "redirect:/admin/categories";
+    }
+
+    @PutMapping("/admin/categories/update/{id}")
+    public String updateCat(@PathVariable int id,Model model){
+        Optional<Category> category = categoryService.getCategoryById(id);
+        if(category.isPresent()) {
+            model.addAttribute("category",category.get());
+            return "categoriesAdd";
+        }
+        return "404";
+    }
+
+    //PRODUCT SECTION
+    @GetMapping("/admin/products")
+    public String deleteCat(Model model){
+        model.addAttribute("products",productService.getAllProducts());
+        return "products";
+    }
+
+    @GetMapping("/admin/products/add")
+    public String getProductAdd(Model model){
+        model.addAttribute("product", new Product());
+        return "productsadd";
+    }
+
 }
