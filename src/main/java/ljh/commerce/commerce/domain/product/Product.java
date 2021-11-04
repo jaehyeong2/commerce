@@ -1,5 +1,6 @@
 package ljh.commerce.commerce.domain.product;
 
+import ljh.commerce.commerce.domain.category.Category;
 import ljh.commerce.commerce.domain.categoryproduct.CategoryProduct;
 import ljh.commerce.commerce.domain.orderproduct.OrderProduct;
 import lombok.Getter;
@@ -18,8 +19,12 @@ public class Product {
     @Column(name = "product_id")
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     @OneToMany(mappedBy = "product")
-    private List<OrderProduct> orderItemList = new ArrayList<>();
+    private List<OrderProduct> orderProductList = new ArrayList<>();
 
     @OneToMany(mappedBy = "product")
     private List<CategoryProduct> categoryProductList = new ArrayList<>();
