@@ -60,9 +60,15 @@ public class AdminController {
         return "404";
     }
 
+    @GetMapping("/admin/categories/delete/{id}")
+    public String deleteCat(Model model, @PathVariable int id){
+        categoryService.deleteCategoryById(id);
+        return "redirect:/admin/categories";
+    }
+
     //PRODUCT SECTION
     @GetMapping("/admin/products")
-    public String deleteCat(Model model){
+    public String products(Model model){
         model.addAttribute("products",productService.getAllProducts());
         return "products";
     }
@@ -73,4 +79,9 @@ public class AdminController {
         return "productsadd";
     }
 
+    @DeleteMapping("admin/products/delete/{id}")
+    public String deleteProduct(Model model, @PathVariable int id){
+        productService.removeProduct(id);
+        return "redircect:/admin/categories";
+    }
 }

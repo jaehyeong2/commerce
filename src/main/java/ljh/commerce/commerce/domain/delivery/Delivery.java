@@ -1,6 +1,5 @@
 package ljh.commerce.commerce.domain.delivery;
 
-import ljh.commerce.commerce.domain.address.Address;
 import ljh.commerce.commerce.domain.order.Order;
 
 import javax.persistence.*;
@@ -15,9 +14,6 @@ public class Delivery {
 
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private Order order;
-
-    @Embedded
-    private Address address;
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus deliveryStatus;

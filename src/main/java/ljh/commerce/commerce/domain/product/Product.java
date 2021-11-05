@@ -19,6 +19,10 @@ public class Product {
     @Column(name = "product_id")
     private Long id;
 
+    private String name;
+    private int price;
+    private int stockQuantity;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -28,9 +32,5 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     private List<CategoryProduct> categoryProductList = new ArrayList<>();
-
-    private String name;
-    private int price;
-    private int stockQuantity;
 
 }

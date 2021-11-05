@@ -1,6 +1,4 @@
 package ljh.commerce.commerce.domain.user;
-
-import ljh.commerce.commerce.domain.address.Address;
 import ljh.commerce.commerce.domain.order.Order;
 import lombok.*;
 
@@ -33,9 +31,6 @@ public class User {
     private String role;
 
     private LocalDateTime createDate;
-
-    @Embedded
-    private Address address;
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
