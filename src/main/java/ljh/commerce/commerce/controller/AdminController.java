@@ -3,6 +3,7 @@ package ljh.commerce.commerce.controller;
 
 import ljh.commerce.commerce.domain.category.Category;
 import ljh.commerce.commerce.domain.product.Product;
+import ljh.commerce.commerce.dto.ProductDto;
 import ljh.commerce.commerce.service.CategoryService;
 import ljh.commerce.commerce.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Optional;
 
 @Slf4j
@@ -23,7 +26,7 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String adminHome(){
-        return "adminHome";
+        return "admin";
     }
 
     @GetMapping("/admin/categories")
@@ -60,12 +63,6 @@ public class AdminController {
         return "404";
     }
 
-    @GetMapping("/admin/categories/delete/{id}")
-    public String deleteCat(Model model, @PathVariable int id){
-        categoryService.deleteCategoryById(id);
-        return "redirect:/admin/categories";
-    }
-
     //PRODUCT SECTION
     @GetMapping("/admin/products")
     public String products(Model model){
@@ -74,14 +71,27 @@ public class AdminController {
     }
 
     @GetMapping("/admin/products/add")
-    public String getProductAdd(Model model){
-        model.addAttribute("product", new Product());
-        return "productsadd";
+    public String ProductAddGet(Model model){
+        model.addAttribute("productDto",new ProductDto());
+        model.addAttribute("categories",categoryService.getAllCategories());
+        return "productsAdd";
+    }
+
+    @PostMapping("/admin/products/add")
+    public String ProductAddPost(@ModelAttribute("ProductDto") ProductDto productDto,
+                                 @RequestParam("productImage")MultipartFile file,
+                                 @RequestParam("imgName")String imgName) throws IOException {
+
+        Product product = new Product();
+        product.setId(productDto.getId());
+        product.setName(productDto.getName());
+        product.setCategory(categoryService.getCategoryById(productDto.getCategoryId()).get());
+        return "redirect:/admin/products";
     }
 
     @DeleteMapping("admin/products/delete/{id}")
     public String deleteProduct(Model model, @PathVariable int id){
         productService.removeProduct(id);
-        return "redircect:/admin/categories";
+        return "redirect:/admin/categories";
     }
 }

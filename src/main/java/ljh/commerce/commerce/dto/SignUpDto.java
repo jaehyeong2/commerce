@@ -24,5 +24,4 @@ public class SignUpDto {
                 .username(username).password(password).email(email)
                 .build();
     }
-
 }
