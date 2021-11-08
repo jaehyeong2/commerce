@@ -78,20 +78,40 @@ public class AdminController {
     }
 
     @PostMapping("/admin/products/add")
-    public String ProductAddPost(@ModelAttribute("ProductDto") ProductDto productDto,
+    public String ProductAddPost(@ModelAttribute("productDto") ProductDto productDto,
                                  @RequestParam("productImage")MultipartFile file,
                                  @RequestParam("imgName")String imgName) throws IOException {
 
         Product product = new Product();
         product.setId(productDto.getId());
         product.setName(productDto.getName());
+        product.setPrice(productDto.getPrice());
+        product.setImageName(productDto.getImageName());
         product.setCategory(categoryService.getCategoryById(productDto.getCategoryId()).get());
+
+        productService.addProduct(product);
         return "redirect:/admin/products";
     }
 
     @DeleteMapping("admin/products/delete/{id}")
     public String deleteProduct(Model model, @PathVariable int id){
-        productService.removeProduct(id);
-        return "redirect:/admin/categories";
+        productService.removeProductById(id);
+        return "redirect:/admin/products";
+    }
+
+    @PutMapping("/admin/products/update/{id}")
+    public String updateProduct(@PathVariable int id,Model model){
+        Product product = productService.getProductById(id).get();
+        ProductDto productDto = new ProductDto();
+        productDto.setId(product.getId());
+        productDto.setCategoryId(product.getCategory().getId());
+        productDto.setPrice(product.getPrice());
+        productDto.setName(product.getName());
+        productDto.setImageName(product.getImageName());
+
+        model.addAttribute("categories",categoryService.getAllCategories());
+        model.addAttribute("productDto",productDto);
+
+        return "productsAdd";
     }
 }
