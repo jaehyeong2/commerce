@@ -31,11 +31,6 @@ public class UserController {
         return "signin";
     }
 
-    @GetMapping("/shop")
-    public String shop() {
-        return "shop";
-    }
-
     @PostMapping("/signup")
     public String signUp(@Valid SignUpDto signUpDto, BindingResult bindingResult){
 

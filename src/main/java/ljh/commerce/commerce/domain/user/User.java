@@ -25,10 +25,10 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     private String email;
 
-    private String role;
+    private String role; //USER,ADMIN
 
     private LocalDateTime createDate;
 
