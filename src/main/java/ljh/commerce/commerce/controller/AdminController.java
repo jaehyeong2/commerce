@@ -47,13 +47,13 @@ public class AdminController {
         return "redirect:/admin/categories";
     }
 
-    @DeleteMapping("/admin/categories/delete/{id}")
+    @GetMapping("/admin/categories/delete/{id}")// form태그 이용하게 수정해야 deletemapping 할수 잇다고함
     public String deleteCat(@PathVariable int id){
         categoryService.deleteCategoryById(id);
         return "redirect:/admin/categories";
     }
 
-    @PutMapping("/admin/categories/update/{id}")
+    @GetMapping("/admin/categories/update/{id}")
     public String updateCat(@PathVariable int id,Model model){
         Optional<Category> category = categoryService.getCategoryById(id);
         if(category.isPresent()) {
@@ -93,13 +93,13 @@ public class AdminController {
         return "redirect:/admin/products";
     }
 
-    @DeleteMapping("admin/products/delete/{id}")
+    @GetMapping("admin/products/delete/{id}")
     public String deleteProduct(Model model, @PathVariable int id){
         productService.removeProductById(id);
         return "redirect:/admin/products";
     }
 
-    @PutMapping("/admin/products/update/{id}")
+    @GetMapping("/admin/products/update/{id}")
     public String updateProduct(@PathVariable int id,Model model){
         Product product = productService.getProductById(id).get();
         ProductDto productDto = new ProductDto();

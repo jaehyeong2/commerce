@@ -32,7 +32,7 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<OrderProduct> orderProductList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "product")
-    private List<CategoryProduct> categoryProductList = new ArrayList<>();
+//    @OneToMany(mappedBy = "product")
+//    private List<CategoryProduct> categoryProductList = new ArrayList<>();
 
 }
