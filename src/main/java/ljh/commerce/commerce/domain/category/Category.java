@@ -1,6 +1,7 @@
 package ljh.commerce.commerce.domain.category;
 
 import ljh.commerce.commerce.domain.categoryproduct.CategoryProduct;
+import ljh.commerce.commerce.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,14 +15,14 @@ import java.util.List;
 public class Category {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "category_id")
-    private int id;
+    private Long id;
 
     private String name;
 
-//    @OneToMany(mappedBy = "category")
-//    private List<CategoryProduct> categoryProductList = new ArrayList<>();
+    @OneToMany(mappedBy = "category")
+    private List<Product> products = new ArrayList<>();
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "parent_id")

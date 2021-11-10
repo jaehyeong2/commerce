@@ -94,13 +94,13 @@ public class AdminController {
     }
 
     @GetMapping("admin/products/delete/{id}")
-    public String deleteProduct(Model model, @PathVariable int id){
+    public String deleteProduct(Model model, @PathVariable long id){
         productService.removeProductById(id);
         return "redirect:/admin/products";
     }
 
     @GetMapping("/admin/products/update/{id}")
-    public String updateProduct(@PathVariable int id,Model model){
+    public String updateProduct(@PathVariable long id,Model model){
         Product product = productService.getProductById(id).get();
         ProductDto productDto = new ProductDto();
         productDto.setId(product.getId());

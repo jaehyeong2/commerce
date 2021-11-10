@@ -29,8 +29,8 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "product")
-    private List<OrderProduct> orderProductList = new ArrayList<>();
+//    @OneToMany(mappedBy = "product")
+//    private List<OrderProduct> orderProductList = new ArrayList<>();
 
 //    @OneToMany(mappedBy = "product")
 //    private List<CategoryProduct> categoryProductList = new ArrayList<>();
