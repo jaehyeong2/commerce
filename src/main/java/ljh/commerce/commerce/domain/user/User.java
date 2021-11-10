@@ -20,7 +20,9 @@ public class User {
     private Long id;
 
     @Column(unique = true, length = 20)
-    private String username;
+    private String username; //아이디
+
+    private String realName; // 이름
 
     @Column(nullable = false)
     private String password;
