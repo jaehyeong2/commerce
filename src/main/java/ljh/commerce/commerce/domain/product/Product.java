@@ -1,7 +1,6 @@
 package ljh.commerce.commerce.domain.product;
 
 import ljh.commerce.commerce.domain.category.Category;
-import ljh.commerce.commerce.domain.categoryproduct.CategoryProduct;
 import ljh.commerce.commerce.domain.orderproduct.OrderProduct;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +24,7 @@ public class Product {
     private String imageName;
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 

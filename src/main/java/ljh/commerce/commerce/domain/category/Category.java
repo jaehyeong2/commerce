@@ -1,6 +1,4 @@
 package ljh.commerce.commerce.domain.category;
-
-import ljh.commerce.commerce.domain.categoryproduct.CategoryProduct;
 import ljh.commerce.commerce.domain.product.Product;
 import lombok.Getter;
 import lombok.Setter;
