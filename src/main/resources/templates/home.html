@@ -1,6 +1,6 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -29,6 +29,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/shop}">쇼핑하기</a>
                 </li>
+
                 <li class="nav-item active">
                     <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/signin}">로그인</a>
                 </li>

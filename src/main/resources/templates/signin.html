@@ -21,10 +21,10 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}" href="#">home</a>
+                    <a class="nav-link" th:href="@{/}" href="#">홈</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
+                    <a class="nav-link" th:href="@{/shop}" href="#">쇼핑하기</a>
                 </li>
             </ul>
 
@@ -49,10 +49,9 @@
                     Invalid username or password.
                 </div>
 
-                <input type="submit" value="로그인" th:href="@{/index}" class="btn btn-primary btn-block" >
+                <input type="submit" value="로그인" th:href="@{/home}" class="btn btn-primary btn-block" >
                 <br>
-                <span > 아직 계정이 없으신가요? <a class="linkControl" href="./register.html"
-                                                th:href="@{/signup}">회원가입</a></span>
+                <span > 아직 계정이 없으신가요? <a class="linkControl" th:href="@{/signup}">회원가입</a></span>
                 <br>
             </form>
             <br>
