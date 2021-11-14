@@ -16,12 +16,12 @@ public class HomeController {
     private final CategoryService categoryService;
     private final ProductService productService;
 
-    @GetMapping({"/","/home"})
-    public String home(){
-        return "home";
-    }
+//    @GetMapping("/home")
+//    public String home(){
+//        return "home";
+//    }
 
-    @GetMapping("/shop")
+    @GetMapping({"/","/shop"})
     public String shop(Model model){
         model.addAttribute("categories",categoryService.getAllCategories());
         model.addAttribute("products",productService.getAllProducts());
@@ -38,14 +38,9 @@ public class HomeController {
     public String viewProduct(Model model, @PathVariable int id){
         model.addAttribute("product",productService.getProductById(id).get());
         model.addAttribute("cartCount", GlobalData.cart.size());
-
         return "viewProduct";
     }
 
-    @GetMapping("/cart/remove/{id}")
-    public String cartItemRemove(@PathVariable int id){
-        GlobalData.cart.remove(id);
-        return "redirect:/cart";
-    }
+
 
 }

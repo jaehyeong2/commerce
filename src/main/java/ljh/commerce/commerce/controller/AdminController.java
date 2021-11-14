@@ -71,14 +71,14 @@ public class AdminController {
     }
 
     @GetMapping("/admin/products/add")
-    public String ProductAddGet(Model model){
+    public String productAddGet(Model model){
         model.addAttribute("productDto",new ProductDto());
         model.addAttribute("categories",categoryService.getAllCategories());
         return "productsAdd";
     }
 
     @PostMapping("/admin/products/add")
-    public String ProductAddPost(@ModelAttribute("productDto") ProductDto productDto,
+    public String productAddPost(@ModelAttribute("productDto") ProductDto productDto,
                                  @RequestParam("productImage")MultipartFile file,
                                  @RequestParam("imgName")String imgName) throws IOException {
 
@@ -93,14 +93,14 @@ public class AdminController {
         return "redirect:/admin/products";
     }
 
-    @GetMapping("admin/products/delete/{id}")
-    public String deleteProduct(Model model, @PathVariable long id){
+    @GetMapping("/admin/product/delete/{id}")
+    public String productDelete(@PathVariable int id){
         productService.removeProductById(id);
         return "redirect:/admin/products";
     }
 
-    @GetMapping("/admin/products/update/{id}")
-    public String updateProduct(@PathVariable long id,Model model){
+    @GetMapping("/admin/product/update/{id}")
+    public String productUpdate(@PathVariable int id,Model model){
         Product product = productService.getProductById(id).get();
         ProductDto productDto = new ProductDto();
         productDto.setId(product.getId());

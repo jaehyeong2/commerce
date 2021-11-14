@@ -28,7 +28,7 @@
 
 <div class="container-fluid">
 
-    <a th:href="@{/admin/products/add}" style="margin: 20px 0" class="btn btn-primary">Add Product</a>
+    <a th:href="@{/admin/products/add}" style="margin: 20px 0" class="btn btn-primary">상품 추가하기</a>
     <table class="table">
         <thead class="thead-light">
         <tr>
@@ -43,11 +43,10 @@
         <tbody>
 
         <tr th:each="product, iStat : ${products}">
-            <th scope="row" th:text="${iStat.index + 1}">1</th>
-            <td th:text="${product.name}">Larry</td>
-            <td th:text="${product.category.name}">Larry</td>
+            <th scope="row" th:text="${iStat.index + 1}"></th>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.category.name}"></td>
             <td><img src="" height="100px" width="100px"  th:src="@{${'/productImages/' + product.imageName}}"></td>
-
             <td><a href="" th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger">삭제하기</a></td>
             <td><a href="" th:href="@{/admin/product/update/{id}(id=${product.id})}" class="btn btn-warning">업데이트</a></td>
 

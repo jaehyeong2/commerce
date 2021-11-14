@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RequiredArgsConstructor
 @Controller
@@ -27,5 +28,11 @@ public class CartController {
     public String checkout(Model model){
         model.addAttribute("cartCount", GlobalData.cart.size());
         return "checkout";
+    }
+
+    @GetMapping("/cart/remove/{id}")
+    public String cartItemRemove(@PathVariable int id){
+        GlobalData.cart.remove(id);
+        return "redirect:/cart";
     }
 }
