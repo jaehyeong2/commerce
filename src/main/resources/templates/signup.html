@@ -56,7 +56,7 @@
                 <small id="emailHelp" class="form-text text-muted">이메일은 다른 용도로 사용되지 않습니다</small>
             </div>
 
-            <input type="submit" value="회원가입" class="btn btn-primary btn-block">
+            <input type="submit" value="회원가입" id="btn-save" class="btn btn-primary btn-block">
             <span style="margin-top: 10px"> 이미 계정이 있으신가요? <a class="linkControl" href="./login.html" th:href="@{/signin}">로그인</a></span>
         </form>
     </div>
@@ -77,12 +77,8 @@
 <!--    &lt;!&ndash;회원가입 인풋end&ndash;&gt;-->
 <!--    </div>-->
 
-<!--&lt;!&ndash;계정이 있으신가요?&ndash;&gt;-->
-<!--    <div class="login__register">-->
-<!--    <span>계정이 있으신가요?</span>-->
-<!--    <a href="/signin">로그인</a>-->
-<!--    </div>-->
-<!--&lt;!&ndash;계정이 있으신가요?end&ndash;&gt;-->
+
+<script src="/js/user.js"></script>
 </div>
 </body>
 </html>

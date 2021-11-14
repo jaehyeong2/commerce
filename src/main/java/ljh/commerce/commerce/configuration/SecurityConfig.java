@@ -26,11 +26,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/", "/shop/**", "/signup","/css/**").permitAll()
+                .antMatchers("/", "/shop/**", "/signup","/css/**","/js/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/signin").permitAll()
-                .loginProcessingUrl("/signin").defaultSuccessUrl("/shop");
+                .loginProcessingUrl("/signin").defaultSuccessUrl("/");
 //                .antMatchers("/","/shop/**","/signup",).permitAll()
 //                .antMatchers("/admin/**").hasRole("ADMIN")
 //                .anyRequest().authenticated()

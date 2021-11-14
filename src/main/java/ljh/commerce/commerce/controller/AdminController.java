@@ -14,12 +14,17 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
 @Controller
 public class AdminController {
+
+    public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/images";
 
     private final CategoryService categoryService;
     private final ProductService productService;
@@ -86,7 +91,16 @@ public class AdminController {
         product.setId(productDto.getId());
         product.setName(productDto.getName());
         product.setPrice(productDto.getPrice());
-        product.setImageName(productDto.getImageName());
+
+        String imageUUID;
+        if(!file.isEmpty()) {
+            imageUUID = file.getOriginalFilename();
+            Path filenamePath = Paths.get(uploadDir,imageUUID);
+            Files.write(filenamePath,file.getBytes());
+        } else{
+            imageUUID = imgName;
+        }
+        product.setImageName(imageUUID);
         product.setCategory(categoryService.getCategoryById(productDto.getCategoryId()).get());
 
         productService.addProduct(product);
