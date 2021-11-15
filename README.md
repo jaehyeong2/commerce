@@ -7,7 +7,7 @@
 
 - Spring MVC
 
-- Spring Boot Security
+- Spring Security
 
 - Spring Data JPA
 
