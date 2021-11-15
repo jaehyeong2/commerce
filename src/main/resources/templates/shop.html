@@ -63,7 +63,7 @@
                     <div class="col-sm-7 d-flex justify-content-center">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product.name}"></h5>
-                            <h4><span th:text="${product.price}">원</span></h4>
+                            <h4><span th:text="${product.price}"></span>원</h4>
                             <p th:text="${product.description}" >Suresh Dasari is a founder and technical lead developer in tutlane.</p>
                             <a href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}" class="btn btn-primary">상품보기</a>
                         </div>

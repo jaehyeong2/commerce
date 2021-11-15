@@ -2,6 +2,7 @@ package ljh.commerce.commerce.controller;
 
 import ljh.commerce.commerce.domain.user.User;
 import ljh.commerce.commerce.dto.SignUpDto;
+import ljh.commerce.commerce.global.GlobalData;
 import ljh.commerce.commerce.handler.ex.CustomValidationException;
 import ljh.commerce.commerce.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ public class UserController {
 
     @GetMapping("/signin")
     public String signInForm() {
+        GlobalData.cart.clear();
         return "signin";
     }
 

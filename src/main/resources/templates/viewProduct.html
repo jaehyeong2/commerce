@@ -32,9 +32,6 @@
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/cart}" href="#">카트</a>
                 </li>
-                <li class="nav-item active">
-                    <span class="nav-link" th:text="${cartCount}"></span>
-                </li>
             </ul>
 
         </div>
@@ -50,9 +47,9 @@
         <div class="col-sm-7 mt-5">
             <h2 th:text="${product.name}"></h2>
             <p th:text="${product.category.name}"></p>
-            <h2><span th:text="${product.price}">원</span></h2>
-            <p th:text="${product.description}"></p>
-            <a href="" th:href="@{/addToCart/{id}(id = ${product.id})}" class="btn btn-primary">카트에 담기</a>
+            <h2><span th:text="${product.price}"></span>원</h2>
+            <p th:text="${product.description}">1</p>
+            <a href="" th:href="@{/cart/{id}(id = ${product.id})}" class="btn btn-primary">카트에 담기</a>
         </div>
     </div>
 </div>

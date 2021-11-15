@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
@@ -21,9 +21,6 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}" href="#">홈</a>
-                </li>
-                <li class="nav-item active">
                     <a class="nav-link" th:href="@{/shop}" href="#">쇼핑하기</a>
                 </li>
                 <li class="nav-item active">
@@ -39,7 +36,6 @@
 
 <main>
     <div class="container">
-
         <!--Section: Block Content-->
         <section class="mt-5 mb-4">
 
@@ -53,13 +49,13 @@
                     <div class="card wish-list mb-4">
                         <div class="card-body">
 
-                            <h5 class="mb-4">카트 (<span th:text="${cartCount}">2</span> 개)</h5>
+                            <h5 class="mb-4">카트 (<span th:text="${cartCount}"></span> 개)</h5>
 
                             <div class="row mb-4" th:each="item, iStat : ${cart}">
                                 <div class="col-md-5 col-lg-3 col-xl-3">
                                     <div class="mb-3 mb-md-0">
                                         <img class="img-fluid w-100"
-                                             th:src="@{${'/productImages/' + item.imageName}}"
+                                             th:src="@{${'/images/' + item.imageName}}"
                                              src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" alt="Sample">
 
                                     </div>
@@ -69,19 +65,16 @@
                                         <div class="d-flex justify-content-between">
                                             <div>
                                                 <h5 th:text="${item.name}">Blue denim shirt</h5>
-                                                <p class="mb-3 text-uppercase small">Weight: <span th:text="${item.weight}"></span> grams</p>
-                                                <!--                                                <p class="mb-2 text-uppercase small">Category: <span th:text="${item.category.name}"></span></p>-->
-
                                             </div>
 
                                         </div>
                                         <div class="mt-5 d-flex justify-content-between align-items-center">
                                             <div>
-                                                <a href="#!" th:href="@{/cart/removeItem/{index}(index=${iStat.index})}"  type="button" class="card-link-secondary small text-uppercase mr-3"><i
-                                                        class="fas fa-trash-alt mr-1"></i> Remove item </a>
+                                                <a href="#!" th:href="@{/cart/remove/{index}(index=${iStat.index})}"  type="button" class="card-link-secondary small text-uppercase mr-3"><i
+                                                        class="fas fa-trash-alt mr-1"></i> 카트에서 삭제 </a>
 
                                             </div>
-                                            <p class="mb-0"><span><strong>₹<span th:text="${item.price}"></span></strong></span></p>
+                                            <p class="mb-0"><span><strong><span th:text="${item.price}"></span>원</strong></span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -104,30 +97,26 @@
                     <div class="card mb-4">
                         <div class="card-body">
 
-                            <h5 class="mb-3">The total amount </h5>
+                            <h5 class="mb-3">총 구매가격 </h5>
 
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                    Amount Payable
-                                    <span>₹<span th:text="${total}"></span></span>
+                                    결제 금액
+                                    <span><span th:text="${total}"></span>원</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                    Shipping
-                                    <span>Gratis</span>
+                                    배송
+                                    <span>일반</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                     <div>
-                                        <strong>The total amount of</strong>
-                                        <strong>
-                                            <p class="mb-0">(including VAT)</p>
-                                        </strong>
+                                        <strong>최종 결제금액</strong>
                                     </div>
-                                    <span><strong>₹<span th:text="${total}"></span></strong></span>
+                                    <span><strong><span th:text="${total}"></span>원</strong></span>
                                 </li>
                             </ul>
 
-                            <a th:href="@{/checkout}" h class="btn btn-primary btn-block waves-effect waves-light">go to
-                                checkout</a>
+                            <a th:href="@{/checkout}" class="btn btn-primary btn-block waves-effect waves-light">결제하기</a>
 
                         </div>
                     </div>
@@ -139,7 +128,7 @@
 
                             <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse" href="#collapseExample"
                                aria-expanded="false" aria-controls="collapseExample">
-                                Add a discount code (optional)
+                                할인 쿠폰 적용하기 (선택)
                                 <span><i class="fas fa-chevron-down pt-1"></i></span>
                             </a>
 

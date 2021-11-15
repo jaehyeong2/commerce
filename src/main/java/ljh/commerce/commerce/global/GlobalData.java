@@ -6,5 +6,5 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GlobalData {
-    public static List<Product> cart = new ArrayList<Product>();
+    public static List<Product> cart = new ArrayList<>();
 }

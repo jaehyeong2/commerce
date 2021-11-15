@@ -19,14 +19,21 @@ public class CartController {
     @GetMapping("/cart")
     public String cartGet(Model model){
         model.addAttribute("cartCount", GlobalData.cart.size());
-//        model.addAttribute("total", GlobalData.cart.stream().mapToInt(Product::getId));
+        model.addAttribute("total", GlobalData.cart.stream().mapToInt(Product::getPrice).sum());
         model.addAttribute("cart", GlobalData.cart);
         return "cart";
+    }
+
+    @GetMapping("/cart/{id}")
+    public String addToCart(@PathVariable long id){
+        GlobalData.cart.add(productService.getProductById(id).get());
+        return "redirect:/shop";
     }
 
     @GetMapping("/checkout")
     public String checkout(Model model){
         model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("total", GlobalData.cart.stream().mapToInt(Product::getPrice).sum());
         return "checkout";
     }
 
