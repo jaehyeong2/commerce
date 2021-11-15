@@ -29,9 +29,10 @@ public class HomeController {
     }
 
     @GetMapping("/shop/category/{id}")
-    public String shopByCategory(Model model, @PathVariable int id){
-        model.addAttribute("product",productService.getProductById(id).get());
-        return "viewProduct";
+    public String shopByCategory(Model model, @PathVariable long id){
+        model.addAttribute("categories",categoryService.getAllCategories());
+        model.addAttribute("products",productService.getAllProductByCategoryId(id));
+        return "shop";
     }
 
     @GetMapping("/shop/viewproduct/{id}")

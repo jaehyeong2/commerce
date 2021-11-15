@@ -36,7 +36,7 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public List<Product> getAllProductByCategoryId(int categoryId){
+    public List<Product> getAllProductByCategoryId(long categoryId){
         return productRepository.findAllByCategoryId(categoryId);
     }
 }
