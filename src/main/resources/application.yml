@@ -32,3 +32,6 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
 
+file:
+  path: /home/ec2-user/app/git/repository
+
