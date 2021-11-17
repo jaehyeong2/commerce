@@ -1,11 +1,11 @@
 package ljh.commerce.commerce.dto;
 
-import ljh.commerce.commerce.domain.image.ProductImage;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class ProductResDto {
+public class ProductDto {
     private Long id;
     private int price;
     private long categoryId;

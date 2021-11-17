@@ -3,7 +3,6 @@ package ljh.commerce.commerce.controller;
 
 import ljh.commerce.commerce.domain.category.Category;
 import ljh.commerce.commerce.domain.product.Product;
-import ljh.commerce.commerce.dto.ProductResDto;
 import ljh.commerce.commerce.service.CategoryService;
 import ljh.commerce.commerce.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -25,10 +24,7 @@ import java.util.Optional;
 @Controller
 public class AdminController {
 
-
-
     private final CategoryService categoryService;
-    private final ProductService productService;
 
     @GetMapping("/admin")
     public String adminHome(){

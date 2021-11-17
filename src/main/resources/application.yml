@@ -12,17 +12,17 @@ spring:
       suffix:
       prefix:
 
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://cdb.cl0vkozwhx2p.ap-northeast-2.rds.amazonaws.com:3306/cdb?serverTimezone=Asia/Seoul
-    username: admin
-    password: gogo2519
-
 #  datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://localhost:3306/commerce?serverTimezone=Asia/Seoul
-#    username: jae
-#    password: 1234
+#    url: jdbc:mysql://cdb.cl0vkozwhx2p.ap-northeast-2.rds.amazonaws.com:3306/cdb?serverTimezone=Asia/Seoul
+#    username: admin
+#    password: gogo2519
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/commerce?serverTimezone=Asia/Seoul
+    username: jae
+    password: 1234
 
   jpa:
     open-in-view: true
@@ -32,6 +32,17 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
 
-file:
-  path: /home/ec2-user/app/git/repository
+#  servlet:
+#    multipart:
+#      enabled: true
+#      max-file-size: 2MB
+#
+#  security:
+#    user:
+#      name: admin
+#      password: 1234
+#      roles: admin
+
+#file:
+#  path: /home/ec2-user/app/git/repository
 

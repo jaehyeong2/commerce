@@ -1,11 +1,9 @@
 package ljh.commerce.commerce.controller;
 
 import ljh.commerce.commerce.domain.product.Product;
-import ljh.commerce.commerce.dto.ProductReqDto;
-import ljh.commerce.commerce.dto.ProductResDto;
-import ljh.commerce.commerce.dto.ProductResDto;
+import ljh.commerce.commerce.dto.ProductDto;
 import ljh.commerce.commerce.service.CategoryService;
-import ljh.commerce.commerce.service.ProductImageService;
+
 import ljh.commerce.commerce.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,12 +21,11 @@ import java.util.UUID;
 @Controller
 public class ProductController {
 
-//    public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/images";
-    public static String uploadDir = "/home/ec2-user/app/git/repository";
+    public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/images";
+//    public static String uploadDir = "/home/ec2-user/app/git/repository";
 
     private final ProductService productService;
     private final CategoryService categoryService;
-    private final ProductImageService imageService;
 
     //PRODUCT SECTION
     @GetMapping("/admin/products")
@@ -39,13 +36,13 @@ public class ProductController {
 
     @GetMapping("/admin/products/add")
     public String productAddGet(Model model){
-        model.addAttribute("productDto",new ProductResDto());
+        model.addAttribute("productDto",new ProductDto());
         model.addAttribute("categories",categoryService.getAllCategories());
         return "productsAdd";
     }
 
     @PostMapping("/admin/products/add")
-    public String productAddPost(@ModelAttribute("productDto") ProductResDto productDto,
+    public String productAddPost(@ModelAttribute("productDto") ProductDto productDto,
                                  @RequestParam("productImage") MultipartFile file,
                                  @RequestParam("imgName")String imgName) throws IOException {
 
@@ -83,7 +80,7 @@ public class ProductController {
     @GetMapping("/admin/product/update/{id}")
     public String productUpdate(@PathVariable int id,Model model){
         Product product = productService.getProductById(id).get();
-        ProductResDto productResDto = new ProductResDto();
+        ProductDto productResDto = new ProductDto();
         productResDto.setId(product.getId());
         productResDto.setCategoryId(product.getCategory().getId());
         productResDto.setPrice(product.getPrice());
