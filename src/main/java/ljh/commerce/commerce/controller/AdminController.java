@@ -3,7 +3,7 @@ package ljh.commerce.commerce.controller;
 
 import ljh.commerce.commerce.domain.category.Category;
 import ljh.commerce.commerce.domain.product.Product;
-import ljh.commerce.commerce.dto.ProductDto;
+import ljh.commerce.commerce.dto.ProductResDto;
 import ljh.commerce.commerce.service.CategoryService;
 import ljh.commerce.commerce.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,7 @@ import java.util.Optional;
 @Controller
 public class AdminController {
 
-    public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/images";
+
 
     private final CategoryService categoryService;
     private final ProductService productService;
@@ -69,65 +69,5 @@ public class AdminController {
         return "404";
     }
 
-    //PRODUCT SECTION
-    @GetMapping("/admin/products")
-    public String products(Model model){
-        model.addAttribute("products",productService.getAllProducts());
-        return "products";
-    }
 
-    @GetMapping("/admin/products/add")
-    public String productAddGet(Model model){
-        model.addAttribute("productDto",new ProductDto());
-        model.addAttribute("categories",categoryService.getAllCategories());
-        return "productsAdd";
-    }
-
-    @PostMapping("/admin/products/add")
-    public String productAddPost(@ModelAttribute("productDto") ProductDto productDto,
-                                 @RequestParam("productImage")MultipartFile file,
-                                 @RequestParam("imgName")String imgName) throws IOException {
-
-        Product product = new Product();
-        product.setId(productDto.getId());
-        product.setName(productDto.getName());
-        product.setPrice(productDto.getPrice());
-        product.setDescription(productDto.getDescription());
-
-        String imageUUID;
-        if(!file.isEmpty()) {
-            imageUUID = file.getOriginalFilename();
-            Path filenamePath = Paths.get(uploadDir,imageUUID);
-            Files.write(filenamePath,file.getBytes());
-        } else{
-            imageUUID = imgName;
-        }
-        product.setImageName(imageUUID);
-        product.setCategory(categoryService.getCategoryById(productDto.getCategoryId()).get());
-
-        productService.addProduct(product);
-        return "redirect:/admin/products";
-    }
-
-    @GetMapping("/admin/product/delete/{id}")
-    public String productDelete(@PathVariable int id){
-        productService.removeProductById(id);
-        return "redirect:/admin/products";
-    }
-
-    @GetMapping("/admin/product/update/{id}")
-    public String productUpdate(@PathVariable int id,Model model){
-        Product product = productService.getProductById(id).get();
-        ProductDto productDto = new ProductDto();
-        productDto.setId(product.getId());
-        productDto.setCategoryId(product.getCategory().getId());
-        productDto.setPrice(product.getPrice());
-        productDto.setName(product.getName());
-        productDto.setImageName(product.getImageName());
-
-        model.addAttribute("categories",categoryService.getAllCategories());
-        model.addAttribute("productDto",productDto);
-
-        return "productsAdd";
-    }
 }
