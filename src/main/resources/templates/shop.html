@@ -47,7 +47,7 @@
         <div class="col-sm-3">
             <h4>Categories</h4>
             <ul class="list-group">
-                <a th:href="@{/shop}"><li class="list-group-item">모든 상품보기</li></a>
+                <a th:href="@{/shop}"><li class="list-group-item">전체 상품보기</li></a>
                 <a href="" th:each="category, iStat : ${categories}"
                    th:href="@{/shop/category/{id}(id=${category.id})}"><li
                                class="list-group-item" th:text="${category.name}"></li></a>

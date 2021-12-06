@@ -25,9 +25,15 @@ public class CartController {
     }
 
     @GetMapping("/cart/{id}")
-    public String addToCart(@PathVariable long id){
+    public String cartAdd(@PathVariable long id){
         GlobalData.cart.add(productService.getProductById(id).get());
         return "redirect:/shop";
+    }
+
+    @GetMapping("/cart/remove/{id}")
+    public String cartRemove(@PathVariable int id){
+        GlobalData.cart.remove(id);
+        return "redirect:/cart";
     }
 
     @GetMapping("/checkout")
@@ -35,11 +41,5 @@ public class CartController {
         model.addAttribute("cartCount", GlobalData.cart.size());
         model.addAttribute("total", GlobalData.cart.stream().mapToInt(Product::getPrice).sum());
         return "checkout";
-    }
-
-    @GetMapping("/cart/remove/{id}")
-    public String cartItemRemove(@PathVariable int id){
-        GlobalData.cart.remove(id);
-        return "redirect:/cart";
     }
 }

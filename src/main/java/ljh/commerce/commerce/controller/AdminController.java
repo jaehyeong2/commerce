@@ -2,21 +2,13 @@ package ljh.commerce.commerce.controller;
 
 
 import ljh.commerce.commerce.domain.category.Category;
-import ljh.commerce.commerce.domain.product.Product;
 import ljh.commerce.commerce.service.CategoryService;
-import ljh.commerce.commerce.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Optional;
 
 @Slf4j
@@ -44,7 +36,7 @@ public class AdminController {
     }
 
     @PostMapping("/admin/categories/add")
-    public String postCatAdd(@ModelAttribute("category") Category category){
+    public String postCat(@ModelAttribute("category") Category category){
         categoryService.addCategory(category);
         return "redirect:/admin/categories";
     }

@@ -22,20 +22,4 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Product> products = new ArrayList<>();
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "parent_id")
-//    private Category parent;
-//
-//    @OneToMany(mappedBy = "parent")
-//    private List<Category> child = new ArrayList<>();
-
-//    public void setParent(Category parent) {
-//        this.parent = parent;
-//    }
-//
-//    //연관관계 편의 메소드
-//    public void addChildCategory(Category child){
-//        this.child.add(child);
-//        child.setParent(this);
-//    }
 }

@@ -13,12 +13,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class ProductService {
-    private final ProductRepository productRepository;
 
-    @Transactional(readOnly = true)
-    public List<Product> getAllProducts(){
-        return productRepository.findAll();
-    }
+    private final ProductRepository productRepository;
 
     @Transactional
     public void addProduct(Product product){
@@ -33,6 +29,11 @@ public class ProductService {
     @Transactional(readOnly = true)
     public Optional<Product> getProductById(long id){
         return productRepository.findById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Product> getAllProducts(){
+        return productRepository.findAll();
     }
 
     @Transactional(readOnly = true)

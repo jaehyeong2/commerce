@@ -32,17 +32,6 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
 
-#  servlet:
-#    multipart:
-#      enabled: true
-#      max-file-size: 2MB
-#
-#  security:
-#    user:
-#      name: admin
-#      password: 1234
-#      roles: admin
-
 #file:
 #  path: /home/ec2-user/app/git/repository
 

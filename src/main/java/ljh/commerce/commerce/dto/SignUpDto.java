@@ -2,9 +2,6 @@ package ljh.commerce.commerce.dto;
 
 import ljh.commerce.commerce.domain.user.User;
 import lombok.Data;
-import lombok.Getter;
-
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
