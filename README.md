@@ -14,6 +14,8 @@
 
 - Spring Data JPA
 
+- Spring Validation
+
 
 **Build tool**
 
